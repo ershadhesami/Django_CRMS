@@ -1,0 +1,42 @@
+{% extends 'template.html' %}
+
+{% block content %}
+
+<div class="col-4 offset-4">
+
+    <h2 class="text-center my-5">Register</h2>
+
+    <!-- {% if messages %}
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		{% for message in messages %}
+			{{message}}
+			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		{% endfor %}
+	</div>
+	{% endif %} -->
+
+	{% if form.errors %}
+	<div class="alert alert-warning alert-dismissible fade show" role="alert">
+		Your form has errors:
+		<br><br>
+		{% for field in form %}
+			{% if field.errors %}
+				{{ field.errors }}
+			{% endif %}
+		{% endfor %}
+		<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+	</div>
+	{% endif %}
+
+    <form action="{% url 'register' %}" method="POST">
+
+        {{ form.as_p }}
+
+		{% csrf_token %}
+        
+        <input type="submit" value="Register" class="btn btn-secondary mb-5">
+    </form>
+
+</div>
+
+{% endblock %}
