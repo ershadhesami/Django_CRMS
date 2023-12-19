@@ -1,0 +1,21 @@
+{% extends 'template.html' %}
+
+{% block content %}
+
+<div class="col-4 offset-4">
+
+	<h2 class="text-center my-5">Add Record</h2>
+
+	<form action="{% url 'add-record' %}" method="POST">
+
+		{% csrf_token %}
+
+		{{ form.as_p }}
+
+		<input type="submit" value="Add Record" class="btn btn-secondary">
+
+	</form>
+
+</div>
+
+{% endblock %}
